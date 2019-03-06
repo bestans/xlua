@@ -298,6 +298,7 @@ namespace XLua
 #endif
                 var _L = L;
                 //insert the loader
+                //获取获取全局table package.searchers
                 LuaAPI.xlua_getloaders(_L);
                 if (!LuaAPI.lua_istable(_L, -1))
                 {
@@ -307,6 +308,7 @@ namespace XLua
                 index = index < 0 ? (int)(len + index + 2) : index;
                 for (int e = (int)len + 1; e > index; e--)
                 {
+                    //将table中e-1位置的元素设置到e位置
                     LuaAPI.xlua_rawgeti(_L, -1, e - 1);
                     LuaAPI.xlua_rawseti(_L, -2, e);
                 }
