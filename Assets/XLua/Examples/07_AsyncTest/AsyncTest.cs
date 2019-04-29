@@ -28,6 +28,7 @@ public class AsyncTest : MonoBehaviour
         {
             luaenv.Tick();
         }
+        //MessageBox.ShowAlertBox("aaa", "bb");
     }
 }
 

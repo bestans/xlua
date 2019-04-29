@@ -17,6 +17,7 @@ return {
 	
 	confirm = function(message, title)
 		local ret = sync_confirm(message, title)
+		print("sync_confirm "..tostring(ret))
 		return ret == true
     end;
  }

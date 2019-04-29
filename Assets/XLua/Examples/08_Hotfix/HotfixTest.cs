@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 using XLua;
 
+[LuaCallCSharp]
+public class TestLua
+{
+    public static int Add(int v1, int v2)
+    {
+        return (v1 + v2) * 10;
+    }
+}
 [Hotfix]
 public class HotfixTest : MonoBehaviour
 {
@@ -30,7 +38,8 @@ public class HotfixTest : MonoBehaviour
                 xlua.hotfix(CS.HotfixTest, 'Update', function(self)
                     self.tick = self.tick + 1
                     if (self.tick % 50) == 0 then
-                        print('<<<<<<<<Update in lua, tick = ' .. self.tick)
+                        local value = CS.TestLua.Add(10, 1)
+                        print('<<<<<<<<Update in lua, tick = ' .. self.tick .. ',' .. value)
                     end
                 end)
             ");
